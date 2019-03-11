@@ -5,9 +5,9 @@ Functionality Features:
 =======================
 1) Finds the lines of code of all the files (python, c, c++ configurable) from the current directory
   
-  1.1) Skips empty lines
+      1.1) Skips empty lines
   
-  1.2) Skips commented lines (In progress)
+      1.2) Skips commented lines (In progress)
   
 2) Checks all the files recursively
 3) Generates report about each file
