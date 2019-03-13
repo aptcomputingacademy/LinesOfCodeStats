@@ -1,4 +1,4 @@
-''
+'''
 count no of lines in .c files found in a directory.
 methods:
 is_c_file
