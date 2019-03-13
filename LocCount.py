@@ -21,7 +21,6 @@ def is_c_file(file_name):
     for file_format in list_code_formats:
         pattern = "\\"+file_format+"$"
         if re.search(pattern,file_name):
-#             print("File format: ", file_name)
             return True
     return False
 
@@ -36,15 +35,6 @@ def count_c_code(root_dir):
 
 
     for dir_name, sub_dir_list, file_list in os.walk(root_dir):
-        #print('Found directory: %s' % dir_name)
-        #print(sub_dir_list)
-        #print(file_list)
-        #print("\n\n")
-        
-        #Go through sub dirs...
-        if len(sub_dir_list) > 0:
-            for sub_dir in sub_dir_list:
-                count_c_code(sub_dir)
         
         list_c_files = list(filter(is_c_file, file_list))
         for item in list_c_files:
@@ -67,23 +57,27 @@ def count_c_code(root_dir):
             Log_fd.write(path+":"+str(lines_in_file)+"\n")
             num_lines += lines_in_file
     return
-try:
-    os.rename("LogPresent.txt", "LogPrev.txt")
-except:
-    pass
-num_lines = 0
-with open("LogPresent.txt", 'w') as log_fd:
-    Log_fd = log_fd
-    start = time.time()
-    count_c_code(ROOT_DIR)
-    end = time.time()
-    print("No of lines of c = {} \nCalculated in {}secs".format(num_lines, end-start))
+
+if __name__ == "__main__":
+    try:
+        os.rename("LogPresent.txt", "LogPrev.txt")
+    except:
+        pass
     
-log_present_fd = open("LogPresent.txt", 'r')
-log_present_lines = set(log_present_fd.readlines())
-log_present_fd.close()
-log_prev_fd = open("LogPrev.txt", 'r')
-log_prev_lines = set(log_prev_fd.readlines())
-log_prev_fd.close()
-    
-print("Diff = ", log_present_lines - log_prev_lines)
+    num_lines = 0
+    with open("LogPresent.txt", 'w') as log_fd:
+        Log_fd = log_fd
+        start = time.time()
+        count_c_code(ROOT_DIR)
+        end = time.time()
+        print("No of lines of c = {} \nCalculated in {}secs".format(num_lines, end-start))
+
+    log_present_fd = open("LogPresent.txt", 'r')
+    log_present_lines = set(log_present_fd.readlines())
+    log_present_fd.close()
+    log_prev_fd = open("LogPrev.txt", 'r')
+    log_prev_lines = set(log_prev_fd.readlines())
+    log_prev_fd.close()
+
+    print("Difference between present and previous stats:\n******************\n ", log_present_lines - log_prev_lines)
+    print("*********************")
