@@ -34,3 +34,7 @@ Sample output:
 No of lines of c = 597 
 Calculated in 0.00795888900756836secs
 Diff =  {'../../../AptComputingAcademy/Cpp/day4/asser.cpp:8\n'}
+
+Features needs to be added:
+===========================
+1) Lines should be ignored if the multiple lines are commented with /* */ (in c or c++) and ''' ''' (in Python file)
