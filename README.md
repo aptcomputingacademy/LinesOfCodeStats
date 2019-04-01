@@ -28,7 +28,8 @@ list_code_formats
 remove_dirs
 3) Execute the commands:
 Command: python3 line_count.py ../../../AptComputingAcademy/Cpp/
-Sample output:-
+Sample output:
+==============
 No of lines of c = 597 
 Calculated in 0.00795888900756836secs
 Diff =  {'../../../AptComputingAcademy/Cpp/day4/asser.cpp:8\n'}
