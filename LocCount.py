@@ -37,7 +37,7 @@ def count_c_code(root_dir):
         list_c_files = list(filter(is_c_file, file_list))
         for item in list_c_files:
             if dir_name in remove_dirs:
-                return
+                continue
             path = os.path.join(dir_name, item)
             #print(path)
             try:
